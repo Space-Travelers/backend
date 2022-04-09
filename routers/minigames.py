@@ -1,16 +1,10 @@
 from fastapi import APIRouter
 
-from utils.minigames import quiz_game,def_game
+from utils.minigames import challenge_type
 
 router = APIRouter()
 
-@router.get("/quiz")
-async def quiz_game_route():
-    return quiz_game()
+@router.get("/{challenge}")
+async def quiz_game_route(challenge:str):
+    return challenge_type(challenge)
     
-
-@router.get("/definiciones")
-async def definciones_game_route():
-    return def_game()
-    
-
