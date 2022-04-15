@@ -1,6 +1,6 @@
 import email
 from fastapi import APIRouter
-from utils.player import register_player
+from utils.player import register_player, authentication_player
 from models.player import PlayerRegister, PlayerLogin
 router = APIRouter()
 
@@ -13,9 +13,8 @@ async def register(player:PlayerRegister):
 
 @router.post("/login")
 async  def login(player:PlayerLogin):
-    return player
+    if(authentication_player(player)):
+        return {"message:" "Player logged"}
+    return {"message:" "Player not logged"}
 
-@router.get("/register")
-async def register_get():
-   return {"message":  "Player registered"}
 

@@ -1,5 +1,6 @@
-import json
+
 from utils.db import conection_db
+from models.player import PlayerRegister, PlayerLogin
 
 def register_player(player:PlayerRegister):
     conection = conection_db()
@@ -15,12 +16,12 @@ def register_player(player:PlayerRegister):
 def authentication_player(player:PlayerLogin):
     autentication = 0
     conection = conection_db()
-    try:
-        with conection.cursor() as cursor:
-            cursor.execute(f"set @si = 2;
-                            call playerAuthentication("frego202@gmail.com",md5("12345"), @si);
-                            select @si;")
-            
+    with conection.cursor() as cursor:
+        cursor.execute(f"set @si = 2; ")
+        cursor.execute(f"call playerAuthentication('{player.email}', md5('{player.password}'), @si);")
+        cursor.execute("select @si;")
+        autentication = cursor.fetchall()
+        conection.close()
+        return autentication[0][0]
+ 
 
-
-    except:
