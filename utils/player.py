@@ -19,9 +19,9 @@ def authentication_player(player:PlayerLogin):
     autentication = 0
     conection = conection_db()
     with conection.cursor() as cursor:
-        cursor.execute(f"set @si = 2; ")
-        cursor.execute(f"call playerAuthentication('{player.email}', md5('{player.password}'), @si);")
-        cursor.execute("select @si;")
+        cursor.execute(f"set @authentication = 2; ")
+        cursor.execute(f"call playerAuthentication('{player.email}', md5('{player.password}'), @authentication);")
+        cursor.execute("select @authentication;")
         autentication = cursor.fetchall()
         conection.close()
         return autentication[0][0]
