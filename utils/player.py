@@ -1,8 +1,5 @@
 import json
 from utils.db import conection_db
-from models.player import PlayerRegister, PlayerLogin
-
-
 
 def register_player(player:PlayerRegister):
     conection = conection_db()
@@ -15,4 +12,15 @@ def register_player(player:PlayerRegister):
         print("An exception occurred")
         return False
 
+def authentication_player(player:PlayerLogin):
+    autentication = 0
+    conection = conection_db()
+    try:
+        with conection.cursor() as cursor:
+            cursor.execute(f"set @si = 2;
+                            call playerAuthentication("frego202@gmail.com",md5("12345"), @si);
+                            select @si;")
+            
 
+
+    except:
