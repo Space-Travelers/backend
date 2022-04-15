@@ -9,7 +9,6 @@ class PlayerRegister(BaseModel):
     level: str
     gender:str
     school:str
-    text:int
 
 class PlayerLogin(BaseModel):
     email:str
