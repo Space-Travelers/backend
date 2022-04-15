@@ -1,5 +1,4 @@
 from fastapi import APIRouter
-
 from utils.minigames import challenge_type
 
 router = APIRouter()

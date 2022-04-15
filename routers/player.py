@@ -1,22 +1,9 @@
 import email
 from fastapi import APIRouter
-from pydantic import BaseModel
 from utils.player import register_player
+from models.player import PlayerRegister, PlayerLogin
 router = APIRouter()
 
-class PlayerRegister(BaseModel):
-    name: str
-    last_name:str
-    email: str
-    password: str
-    age: int
-    level: str
-    gender:str
-    school:str
-
-class PlayerLogin(BaseModel):
-    email:str
-    password:str
 
 @router.post("/register")
 async def register(player:PlayerRegister):
@@ -27,3 +14,8 @@ async def register(player:PlayerRegister):
 @router.post("/login")
 async  def login(player:PlayerLogin):
     return player
+
+@router.get("/register")
+async def register_get():
+   return {"message":  "Player registered"}
+

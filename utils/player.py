@@ -1,6 +1,8 @@
 import json
 from utils.db import conection_db
-from routers.player import PlayerRegister
+from models.player import PlayerRegister, PlayerLogin
+
+
 
 def register_player(player:PlayerRegister):
     conection = conection_db()
@@ -12,3 +14,5 @@ def register_player(player:PlayerRegister):
     except:
         print("An exception occurred")
         return False
+
+
