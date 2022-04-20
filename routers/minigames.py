@@ -9,4 +9,4 @@ async def minigame_type(challenge:str):
     
 @router.get("/")
 async def minagames():
-    return {"message": "Welcome to the quiz game"}
+    return {"message": "ola"}
