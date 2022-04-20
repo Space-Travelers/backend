@@ -1,8 +1,8 @@
 import pymysql
 
 def conection_db():
-    return pymysql.connect(host='mysql-75127-0.cloudclusters.net',
+    return pymysql.connect(host='mysql-76280-0.cloudclusters.net',
                                 user='admin',
-                                password='WWc5GKaK',
+                                password='npqSNlv1',
                                 db='spaceTravelers',
-                                port= 12977)
+                                port= 19065)
