@@ -23,7 +23,12 @@ def authentication_player(player:PlayerLogin):
         cursor.execute(f"select avatar_health, avatar_nutrition, avatar_physical_condition, avatar_happiness from player where email = '{player.email}' and password = md5('{player.password}')")
         autentication = cursor.fetchall()
         conection.close()
-        print(autentication)
-        return autentication[0][0]
- 
+        if (autentication.__len__() >= 1):
+            body = {"avatar_health":autentication[0][0],
+                    "avatar_nutrition":autentication[0][1],
+                    "avatar_physical_condition":autentication[0][2],
+                    "avatar_happiness":autentication[0][3],
+                 }
+            return body
+        return 0
 

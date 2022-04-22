@@ -13,8 +13,10 @@ async def register(player:PlayerRegister):
 
 @router.post("/login")
 async  def login(player:PlayerLogin):
-    if(authentication_player(player)):
-        return {"message:" "Player logged"}
-    return {"message:" "Player not logged"}
+    print(authentication_player(player))
+    player_login = authentication_player(player)
+    if(player_login):
+        return  player_login
+    return {"Player not logged"}
 
 
