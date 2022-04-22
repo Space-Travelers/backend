@@ -1,6 +1,7 @@
 
 from utils.db import conection_db
 from models.player import PlayerRegister, PlayerLogin
+import hashlib
 
 def register_player(player:PlayerRegister):
     conection = conection_db()
@@ -19,11 +20,10 @@ def authentication_player(player:PlayerLogin):
     autentication = 0
     conection = conection_db()
     with conection.cursor() as cursor:
-        cursor.execute(f"set @authentication = 2; ")
-        cursor.execute(f"call playerAuthentication('{player.email}', md5('{player.password}'), @authentication);")
-        cursor.execute("select @authentication;")
+        cursor.execute(f"select avatar_health, avatar_nutrition, avatar_physical_condition, avatar_happiness from player where email = '{player.email}' and password = md5('{player.password}')")
         autentication = cursor.fetchall()
         conection.close()
+        print(autentication)
         return autentication[0][0]
  
 
