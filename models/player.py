@@ -14,3 +14,10 @@ class PlayerRegister(BaseModel):
 class PlayerLogin(BaseModel):
     email:str
     password:str
+
+
+
+class StatsUpdate(BaseModel):
+    email:str
+    statistic:str
+    points:int
