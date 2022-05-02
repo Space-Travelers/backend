@@ -3,6 +3,8 @@ from fastapi import Depends, FastAPI
 from routers import router as minigames_router
 from routers import router as players_router
 
+
+
 app = FastAPI()
 
 @app.get("/")

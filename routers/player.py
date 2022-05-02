@@ -1,4 +1,4 @@
-import email
+
 from fastapi import APIRouter
 from utils.player import register_player, authentication_player
 from models.player import PlayerRegister, PlayerLogin

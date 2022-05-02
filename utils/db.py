@@ -1,8 +1,27 @@
+import os
 import pymysql
+import sshtunnel
 
-def conection_db():
-    return pymysql.connect(host='mysql-76280-0.cloudclusters.net',
-                                user='admin',
-                                password='npqSNlv1',
-                                db='spaceTravelers',
-                                port= 19065)
+from dotenv import load_dotenv
+load_dotenv()
+
+server = sshtunnel.SSHTunnelForwarder(( os.getenv('PORT'),22),
+                                    ssh_username=os.getenv('SSH_USERNAME'),
+                                    ssh_pkey= os.getenv('SSH_PKEY'),
+                                    remote_bind_address=('localhost', 3306),
+                                    )  
+server.start()
+
+
+
+def conection_db(server):
+    return pymysql.connect(host='localhost',
+                                user='root',
+                                password='5aLmbzTc4CSFyeH9uf',
+                                db='spacetravelers',
+                                port=server.local_bind_port)
+
+
+
+
+
