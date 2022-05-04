@@ -2,12 +2,10 @@ import os
 import pymysql
 import sshtunnel
 
-from dotenv import load_dotenv
-load_dotenv()
 
-server = sshtunnel.SSHTunnelForwarder(( os.getenv('PORT'),22),
-                                    ssh_username=os.getenv('SSH_USERNAME'),
-                                    ssh_pkey= os.getenv('SSH_PKEY'),
+server = sshtunnel.SSHTunnelForwarder(( '20.70.0.41', 22),
+                                    ssh_username="nasagameespol287",
+                                    ssh_pkey= 'nasagameespol287.pem',
                                     remote_bind_address=('localhost', 3306),
                                     )  
 server.start()

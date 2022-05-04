@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 class PlayerRegister(BaseModel):
     name: str
-    last_name:str
+    last_name: str
     email: str
     password: str
     age: int
