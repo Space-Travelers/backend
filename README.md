@@ -6,7 +6,7 @@ Space Travelers es una aplicación de juego que ayudará a los niños de 10 a 14
  
  --- 
  
-**Documentacion:** https://spacetravelers.herokuapp.com/documentation
+**Documentacion:** https://spacetravelersbackend.herokuapp.com/documentation
  
  --- 
 ## Requerimientos
